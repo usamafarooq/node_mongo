@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task Maneger</title>
+</head>
+<body>
+<a href="add">Add Task</a>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Type</th>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% if(data.length){ 
+            for(var i = 0;i < data.length;i++) { %>
+		<tr>
+			<td><%=data[i].name%></td>
+			<td><%= (new Date(data[i].date)).getFullYear() %>-<%= (new Date(data[i].date)).getMonth() + 1 %>-<%= new Date(data[i].date).getDate() %></td>
+			<td><%=data[i].type%></td>
+			<td><a href="edit/<%=data[i]._id%>">Edit</a><a href="delete/<%=data[i]._id%>">Delete</a></td>
+		</tr>
+		<% }
+            }else{ %>
+                <tr>
+                    <td colspan="3">No user</td>
+                </tr>
+        <% } %>
+	</tbody>
+</table>
+</body>
+</html>
